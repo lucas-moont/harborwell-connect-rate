@@ -55,6 +55,18 @@ On the current fixture that is **6 matched / 8 accepted → 75%**, with one twin
 - Reporting Event Match Quality as connect rate. EMQ is Meta's 0–10 score. An iPhone checkout without `fbc` still matches on email here; EMQ would drop anyway.
 - Missing `event_id` on one of a pixel/CAPI pair. That would double-count. It is a tracking bug, and the console would show two rows.
 
+## If this left v0
+
+This console is deliberately a first cut: one number, one fixture, one inspector. I would not hand the **rate** to a model. `summarize()` stays TypeScript. An `OPENAI_API_KEY` would sit **next to** that function — explain, generate cases, draft the next action — not recompute SHA-256.
+
+With more time, and an LLM wired into the same payload the inspector already sees:
+
+1. **Payload autopsy** — paste a raw CAPI JSON (or a webhook from checkout). The matcher runs first and returns the same field checks as the right-hand panel. The model only writes the ops note: “email was hashed before trim/lowercase; fix is in the pixel stub, not in CAPI.” Grounded in `inspectUser()`, not in the model’s memory of Meta docs.
+2. **Adversarial fixture generator** — “give me eight Purchases that would make 75% a lie.” Structured output emits CAPI-shaped JSON, then the real `summarize()` scores it. If the model invents a match, the function catches it. That is how I would regression-test the rule without hand-writing every ugly case.
+3. **Ops digest / ticket draft** — when accepted volume is fine but matched drops, the model turns the row diff into a five-line Slack for Head of Ops, or a Linear ticket: “iOS checkout still hashing ` Maya@… ` with spaces.” Same inspector facts, cheaper than a human staring at hashes.
+
+I would not add a generic “chat with the dashboard.” If the model cannot cite a field check, it should not speak.
+
 ## Run
 
 ```bash
