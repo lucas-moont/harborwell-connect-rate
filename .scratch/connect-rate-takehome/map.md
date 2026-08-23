@@ -17,19 +17,20 @@ A short, deployed Next.js dashboard (Vercel) plus a one-page memo a Head of Ops 
 - Git default to defend in grilling: honest session, one concern per commit, no fabricated timestamps.
 - JSONPlaceholder `/posts` is not the event source. The test allows any public mock; pick one whose shape can support CAPI-like events.
 - Refer to tickets by **name**, never by bare number.
+- Brand: Harborwell (fictional). No UTM strip on v1 — connect rate is the only hero.
 
 ## Decisions so far
 
 - [Meta EMQ and CAPI failure modes](issues/01-meta-emq-capi-failures.md) — CAPI match is `user_data` quality, not `value`/`currency`; High keys are email + `fbc`; pixel+CAPI dedup needs shared `event_id` within 48h. Notes: `research/meta-emq-capi-failures`.
 - [Public mock for event-shaped payloads](issues/02-public-mock-events.md) — no stock mock is CAPI-shaped; host our own fixture on GitHub raw/gist. Notes: `research/public-mock-events`.
+- [CAPI match-rate logic demo](issues/03-capi-match-rate-logic.md) — connect rate is matched ÷ accepted after collapsing twins; email-without-click-id still matches; empty payloads leave the denominator; broken hashes do not match. Demo: `prototype/capi-match-rate-logic`.
+- [Git history the hiring manager reads](issues/04-git-history-narrative.md) — honest session; scaffold → types → fetch → `matchRate()` → UI → memo; HTML and research stay off `master`.
+- [Where the dashboard fetches events](issues/05-event-source.md) — public gist of CAPI-shaped JSON; fail visibly; derive the rate from the payload.
 
 ## Not yet specified
 
-- Dashboard UI, once the match rule exists
-- Memo / README copy
-- Fictional brand name
-- Whether UTM coverage appears as a quality strip, not the hero
-- Final mock payload shape (after [Public mock for event-shaped payloads](issues/02-public-mock-events.md) and [CAPI match-rate logic demo](issues/03-capi-match-rate-logic.md))
+- Exact gist URL (created at implement time)
+- Live deploy URL
 
 ## Out of scope
 
@@ -39,3 +40,4 @@ A short, deployed Next.js dashboard (Vercel) plus a one-page memo a Head of Ops 
 - Fabricated git dates
 - Design system, auth, payments, real PII, Meta tokens
 - Tests and error handling beyond what keeps the prototype and app runnable
+- UTM coverage as a second hero

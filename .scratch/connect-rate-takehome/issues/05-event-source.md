@@ -1,6 +1,7 @@
 # Where the dashboard fetches events
 
 Type: grilling
+Status: resolved
 Label: wayfinder:grilling
 Blocked by: 02
 
@@ -18,4 +19,16 @@ Grill until the human has locked:
 - What happens if the mock is down (fail visibly, not silently empty).
 - Whether the app may reshape the payload client-side or must display the mock as-is.
 
+## Answer
+
+Public GitHub gist (raw URL) of a CAPI-shaped JSON fixture we author. JSONPlaceholder `/posts` is blog posts — mapping that to purchases would be a lie.
+
+If the gist is down or returns non-JSON, the dashboard shows an error. It does not render 0%.
+
+The app **may** derive connect rate from the payload (that is the work). Event rows in the UI follow the fixture fields; we do not invent commerce data that was not sent.
+
+Exact gist URL is recorded in the app once published (task of implementation).
+
 ## Comments
+
+Resolved from research + the default we already chose to defend.

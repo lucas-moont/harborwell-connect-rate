@@ -1,6 +1,7 @@
 # Git history the hiring manager reads
 
 Type: grilling
+Status: resolved
 Label: wayfinder:grilling
 
 ## Question
@@ -19,4 +20,16 @@ Default to defend, one question at a time:
 
 Resolve when the human has locked a commit recipe the implementation session will follow.
 
+## Answer
+
+Honest single session. No fake timestamps.
+
+Commit recipe for the app: `scaffold` → event types → fetch from the public fixture → pure `matchRate()` → minimal UI → memo.
+
+Throwaway HTML stays on `prototype/capi-match-rate-logic`, not `master`. Research stays on `research/*`. README may point at those branches in one line; it does not merge them.
+
+Commit messages in plain English, one concern each.
+
 ## Comments
+
+Resolved from the default the human already asked to defend, with autonomy to lock it.

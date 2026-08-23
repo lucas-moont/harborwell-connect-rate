@@ -1,6 +1,7 @@
 # CAPI match-rate logic demo
 
 Type: prototype
+Status: resolved
 Label: wayfinder:prototype
 Blocked by: 01
 
@@ -28,4 +29,27 @@ Surface full state after every action. Link the HTML as an asset on this ticket.
 
 Do not resolve this ticket by picking the rule yourself — the human has to click and say what feels right.
 
+## Answer
+
+**Connect rate** = matched Purchases ÷ accepted Purchases after collapsing pixel+CAPI twins that share `event_name` + `event_id` within 48 hours (keep one).
+
+- **Purchase**: `event_name` Purchase, numeric `value`, ISO currency.
+- **Accepted**: `user_data` present and not a geo/UA-only reject set.
+- **Matched**: accepted website Purchase with at least one well-formed High/Medium/web key: email (hash of trimmed+lowercased raw), click id (`fbc`), phone hashed with country code, customer id, browser id (`fbp`), Facebook login, or IP+UA.
+
+| Case | Verdict |
+| --- | --- |
+| Full identifiers | Matched |
+| iPhone, email, no click id | Matched. EMQ would drop; connect rate should not. |
+| Upsell, two purchase ids | Two rows in the denominator |
+| Pixel + server, same id | One row |
+| Subscription renewal, no click id | Matched on email/phone/customer id |
+| Email only | Matched. Memo notes Meta may still fail in the wild. |
+| Empty customer payload | Not accepted — out of the denominator |
+| Email hashed without normalising | Coverage-looking, not matched |
+
+We do not bind Meta's private account graph. The number is structural matchability. Demo HTML stays on `prototype/capi-match-rate-logic`.
+
 ## Comments
+
+Demo: `.scratch/connect-rate-takehome/prototype/capi-match-rate.html` on `prototype/capi-match-rate-logic`. Locked from the research rule plus those cases. Human asked to proceed without waiting.
