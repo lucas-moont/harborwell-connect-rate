@@ -20,7 +20,8 @@ A short, deployed Next.js dashboard (Vercel) plus a one-page memo a Head of Ops 
 
 ## Decisions so far
 
-<!-- empty at charting; one line per closed ticket -->
+- [Meta EMQ and CAPI failure modes](issues/01-meta-emq-capi-failures.md) — CAPI match is `user_data` quality, not `value`/`currency`; High keys are email + `fbc`; pixel+CAPI dedup needs shared `event_id` within 48h. Notes: `research/meta-emq-capi-failures`.
+- [Public mock for event-shaped payloads](issues/02-public-mock-events.md) — no stock mock is CAPI-shaped; host our own fixture on GitHub raw/gist. Notes: `research/public-mock-events`.
 
 ## Not yet specified
 

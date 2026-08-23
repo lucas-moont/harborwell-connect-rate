@@ -1,6 +1,7 @@
 # Public mock for event-shaped payloads
 
 Type: research
+Status: resolved
 Label: wayfinder:research
 
 ## Question
@@ -19,4 +20,14 @@ Cover at least:
 
 Write one cited Markdown file. Capture it on a throwaway `research/public-mock-events` branch. Do **not** open a PR.
 
+## Answer
+
+No stock fake-REST catalog (JSONPlaceholder, DummyJSON carts, Fake Store, reqres) returns CAPI-shaped events. Use a **public GitHub gist `raw_url` or `raw.githubusercontent.com` file we author** (CAPI `data[]` with `user_data` + `custom_data` + `event_id`). Do not map JSONPlaceholder `/posts` or DummyJSON/Fake Store carts — that grain is posts and shopping carts, not pixel/CAPI events.
+
+GitHub raw/gist is no-auth and CORS `*`. DummyJSON Custom Response can host JSON but expires in 90 days. reqres `/api/users` is 401 without a key.
+
+Full notes: `.scratch/connect-rate-takehome/research/public-mock-events.md` on branch `research/public-mock-events` (`git show research/public-mock-events:.scratch/connect-rate-takehome/research/public-mock-events.md`).
+
 ## Comments
+
+Resolved by research subagent on throwaway branch `research/public-mock-events`. No PR.
