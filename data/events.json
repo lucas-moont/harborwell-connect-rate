@@ -1,0 +1,181 @@
+{
+  "brand": "Harborwell",
+  "note": "CAPI-shaped Purchase fixture for a take-home. Fake PII. raw_email/raw_phone are debug fields so hash quality can be checked — they are not sent to Meta.",
+  "events": [
+    {
+      "label": "Checkout completed",
+      "event_name": "Purchase",
+      "event_time": 1710000030,
+      "action_source": "website",
+      "event_id": "evt_happy",
+      "source": "capi",
+      "value": 49,
+      "currency": "USD",
+      "user_data": {
+        "raw_email": "maya@harborwell.test",
+        "em": "a099f240a49e5ed5d2842264a71a3e6dbbf07dbd1a48ed379c92fe06ab402415",
+        "raw_phone": "+1 555-555-0100",
+        "ph": "e2bd2ffe3d8da79ec3f8f3f130c79347c398e24df2805976fdc2fa0cf96b5f37",
+        "external_id": "cust_maya",
+        "fbp": "fb.1.1710000000.111222333",
+        "fbc": "fb.1.1710000000.IwAR0click",
+        "client_ip_address": "203.0.113.10",
+        "client_user_agent": "Mozilla/5.0 (Macintosh) Chrome/120"
+      }
+    },
+    {
+      "label": "iPhone Safari checkout",
+      "event_name": "Purchase",
+      "event_time": 1710000060,
+      "action_source": "website",
+      "event_id": "evt_ios",
+      "source": "capi",
+      "value": 49,
+      "currency": "USD",
+      "user_data": {
+        "raw_email": "maya@harborwell.test",
+        "em": "a099f240a49e5ed5d2842264a71a3e6dbbf07dbd1a48ed379c92fe06ab402415",
+        "raw_phone": "+1 555-555-0100",
+        "ph": "e2bd2ffe3d8da79ec3f8f3f130c79347c398e24df2805976fdc2fa0cf96b5f37",
+        "external_id": "cust_maya",
+        "fbp": "fb.1.1710000000.111222333",
+        "client_ip_address": "203.0.113.10",
+        "client_user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0) Safari/604.1"
+      }
+    },
+    {
+      "label": "Browser pixel Purchase",
+      "event_name": "Purchase",
+      "event_time": 1710000090,
+      "action_source": "website",
+      "event_id": "evt_twin",
+      "source": "pixel",
+      "value": 49,
+      "currency": "USD",
+      "user_data": {
+        "raw_email": "maya@harborwell.test",
+        "em": "a099f240a49e5ed5d2842264a71a3e6dbbf07dbd1a48ed379c92fe06ab402415",
+        "raw_phone": "+1 555-555-0100",
+        "ph": "e2bd2ffe3d8da79ec3f8f3f130c79347c398e24df2805976fdc2fa0cf96b5f37",
+        "external_id": "cust_maya",
+        "fbp": "fb.1.1710000000.111222333",
+        "fbc": "fb.1.1710000000.IwAR0click",
+        "client_ip_address": "203.0.113.10",
+        "client_user_agent": "Mozilla/5.0 (Macintosh) Chrome/120"
+      }
+    },
+    {
+      "label": "Server copy of the same Purchase",
+      "event_name": "Purchase",
+      "event_time": 1710000120,
+      "action_source": "website",
+      "event_id": "evt_twin",
+      "source": "capi",
+      "value": 49,
+      "currency": "USD",
+      "user_data": {
+        "raw_email": "maya@harborwell.test",
+        "em": "a099f240a49e5ed5d2842264a71a3e6dbbf07dbd1a48ed379c92fe06ab402415",
+        "raw_phone": "+1 555-555-0100",
+        "ph": "e2bd2ffe3d8da79ec3f8f3f130c79347c398e24df2805976fdc2fa0cf96b5f37",
+        "external_id": "cust_maya",
+        "fbp": "fb.1.1710000000.111222333",
+        "fbc": "fb.1.1710000000.IwAR0click",
+        "client_ip_address": "203.0.113.10",
+        "client_user_agent": "Mozilla/5.0 (Macintosh) Chrome/120"
+      }
+    },
+    {
+      "label": "Upsell",
+      "event_name": "Purchase",
+      "event_time": 1710000150,
+      "action_source": "website",
+      "event_id": "evt_upsell",
+      "source": "capi",
+      "value": 29,
+      "currency": "USD",
+      "user_data": {
+        "raw_email": "maya@harborwell.test",
+        "em": "a099f240a49e5ed5d2842264a71a3e6dbbf07dbd1a48ed379c92fe06ab402415",
+        "raw_phone": "+1 555-555-0100",
+        "ph": "e2bd2ffe3d8da79ec3f8f3f130c79347c398e24df2805976fdc2fa0cf96b5f37",
+        "external_id": "cust_maya",
+        "fbp": "fb.1.1710000000.111222333",
+        "fbc": "fb.1.1710000000.IwAR0click",
+        "client_ip_address": "203.0.113.10",
+        "client_user_agent": "Mozilla/5.0 (Macintosh) Chrome/120"
+      }
+    },
+    {
+      "label": "Subscription renewed",
+      "event_name": "Purchase",
+      "event_time": 1710000180,
+      "action_source": "website",
+      "event_id": "evt_reorder",
+      "source": "capi",
+      "value": 49,
+      "currency": "USD",
+      "user_data": {
+        "raw_email": "maya@harborwell.test",
+        "em": "a099f240a49e5ed5d2842264a71a3e6dbbf07dbd1a48ed379c92fe06ab402415",
+        "raw_phone": "+1 555-555-0100",
+        "ph": "e2bd2ffe3d8da79ec3f8f3f130c79347c398e24df2805976fdc2fa0cf96b5f37",
+        "external_id": "cust_maya"
+      }
+    },
+    {
+      "label": "Email only",
+      "event_name": "Purchase",
+      "event_time": 1710000210,
+      "action_source": "website",
+      "event_id": "evt_email",
+      "source": "capi",
+      "value": 49,
+      "currency": "USD",
+      "user_data": {
+        "raw_email": "maya@harborwell.test",
+        "em": "a099f240a49e5ed5d2842264a71a3e6dbbf07dbd1a48ed379c92fe06ab402415"
+      }
+    },
+    {
+      "label": "No customer fields",
+      "event_name": "Purchase",
+      "event_time": 1710000240,
+      "action_source": "website",
+      "event_id": "evt_empty",
+      "source": "capi",
+      "value": 49,
+      "currency": "USD",
+      "user_data": {}
+    },
+    {
+      "label": "Broken email hash",
+      "event_name": "Purchase",
+      "event_time": 1710000270,
+      "action_source": "website",
+      "event_id": "evt_bad",
+      "source": "capi",
+      "value": 49,
+      "currency": "USD",
+      "user_data": {
+        "raw_email": " Maya@Harborwell.TEST ",
+        "em": "d0159084b26e3f6177848832392da6cd87a1f31a4926c60b1c276831b21d273d"
+      }
+    },
+    {
+      "label": "Phone without country code",
+      "event_name": "Purchase",
+      "event_time": 1710000300,
+      "action_source": "website",
+      "event_id": "evt_ncc",
+      "source": "capi",
+      "value": 49,
+      "currency": "USD",
+      "user_data": {
+        "raw_phone": "555-555-0100",
+        "ph": "6d5dc3b8b5671aa65a03f3bbbd6c670ca4f713012a0840d50f791bc9d1ad0834",
+        "client_user_agent": "Mozilla/5.0"
+      }
+    }
+  ]
+}

@@ -27,7 +27,7 @@ If the gist is down or returns non-JSON, the dashboard shows an error. It does n
 
 The app **may** derive connect rate from the payload (that is the work). Event rows in the UI follow the fixture fields; we do not invent commerce data that was not sent.
 
-Exact gist URL is recorded in the app once published (task of implementation).
+Exact gist URL: https://gist.githubusercontent.com/lucas-moont/cfd60555fc517775496777fc38a2fbd2/raw/events.json
 
 ## Comments
 

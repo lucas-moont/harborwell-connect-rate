@@ -25,11 +25,10 @@ A short, deployed Next.js dashboard (Vercel) plus a one-page memo a Head of Ops 
 - [Public mock for event-shaped payloads](issues/02-public-mock-events.md) — no stock mock is CAPI-shaped; host our own fixture on GitHub raw/gist. Notes: `research/public-mock-events`.
 - [CAPI match-rate logic demo](issues/03-capi-match-rate-logic.md) — connect rate is matched ÷ accepted after collapsing twins; email-without-click-id still matches; empty payloads leave the denominator; broken hashes do not match. Demo: `prototype/capi-match-rate-logic`.
 - [Git history the hiring manager reads](issues/04-git-history-narrative.md) — honest session; scaffold → types → fetch → `matchRate()` → UI → memo; HTML and research stay off `master`.
-- [Where the dashboard fetches events](issues/05-event-source.md) — public gist of CAPI-shaped JSON; fail visibly; derive the rate from the payload.
+- [Where the dashboard fetches events](issues/05-event-source.md) — public gist of CAPI-shaped JSON; fail visibly; derive the rate from the payload. Raw: `https://gist.githubusercontent.com/lucas-moont/cfd60555fc517775496777fc38a2fbd2/raw/events.json`.
 
 ## Not yet specified
 
-- Exact gist URL (created at implement time)
 - Live deploy URL
 
 ## Out of scope
