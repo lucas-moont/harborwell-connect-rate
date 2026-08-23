@@ -1,5 +1,5 @@
 import { fetchEvents } from "../lib/fetchEvents";
-import { explain, isStructurallyMatchable, summarize } from "../lib/matchRate";
+import { explain, isAcceptedUserData, isStructurallyMatchable, summarize } from "../lib/matchRate";
 
 function pct(rate: number | null): string {
   if (rate === null) return "—";
@@ -79,11 +79,13 @@ export default async function Page() {
           </thead>
           <tbody>
             {report.rows.map((row, index) => {
-              const counted = !row.dropped;
-              const matched = counted && isStructurallyMatchable(row.event);
-              const why = row.dropped ? row.dropReason : explain(row.event);
+              const collapsed = row.dropped;
+              const accepted = !collapsed && isAcceptedUserData(row.event);
+              const matched = accepted && isStructurallyMatchable(row.event);
+              const why = collapsed ? row.dropReason : explain(row.event);
+              const countedLabel = collapsed ? "collapsed" : accepted ? "in the rate" : "not accepted";
               return (
-                <tr key={`${row.event.event_id}-${row.event.source}-${index}`} className={row.dropped ? "drop" : ""}>
+                <tr key={`${row.event.event_id}-${row.event.source}-${index}`} className={collapsed || !accepted ? "drop" : ""}>
                   <td>
                     {row.event.label ?? "Purchase"}
                     {typeof row.event.value === "number" ? ` · $${row.event.value}` : ""}
@@ -91,8 +93,8 @@ export default async function Page() {
                   <td>{row.event.source}</td>
                   <td>{row.event.event_id || "(none)"}</td>
                   <td>
-                    <span className={counted ? "pill yes" : "pill mute"}>
-                      {counted ? "in the rate" : "collapsed"}
+                    <span className={accepted ? "pill yes" : "pill mute"}>
+                      {countedLabel}
                     </span>
                   </td>
                   <td>

@@ -39,3 +39,7 @@ The public JSON is ugly on purpose: a clean checkout, an iPhone checkout with no
 npm install
 npm run dev
 ```
+
+Live: https://harborwell-connect-rate.vercel.app
+
+Repo: https://github.com/lucas-moont/harborwell-connect-rate

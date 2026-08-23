@@ -29,7 +29,7 @@ A short, deployed Next.js dashboard (Vercel) plus a one-page memo a Head of Ops 
 
 ## Not yet specified
 
-- Live deploy URL
+- (none — way is clear)
 
 ## Out of scope
 
