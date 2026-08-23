@@ -103,6 +103,67 @@ export function matchKeyList(user: UserData): string[] {
   return keys;
 }
 
+export type FieldCheck = {
+  id: string;
+  label: string;
+  status: "ok" | "bad" | "missing";
+  note: string;
+};
+
+export function inspectUser(user: UserData): FieldCheck[] {
+  const email = !user.em && !user.raw_email
+    ? missing("email", "Email")
+    : wellEmail(user)
+      ? ok("email", "Email", "SHA-256 of trimmed, lowercased raw")
+      : bad("email", "Email", "Hash present, but it is not SHA-256 of the normalised raw");
+
+  const phone = !user.ph && !user.raw_phone
+    ? missing("phone", "Phone")
+    : wellPhone(user)
+      ? ok("phone", "Phone", "Hashed digits include a country code")
+      : (user.raw_phone ?? "").replace(/\D/g, "").length < 11
+        ? bad("phone", "Phone", "Needs a country code (11+ digits)")
+        : bad("phone", "Phone", "Hash does not match the digits");
+
+  const click = !user.fbc
+    ? missing("fbc", "Click id")
+    : wellFbc(user)
+      ? ok("fbc", "Click id", user.fbc)
+      : bad("fbc", "Click id", "Not a well-formed click id");
+
+  const browser = !user.fbp
+    ? missing("fbp", "Browser id")
+    : wellFbp(user)
+      ? ok("fbp", "Browser id", user.fbp)
+      : bad("fbp", "Browser id", "Not a well-formed browser id");
+
+  const customer = wellExternalId(user)
+    ? ok("external_id", "Customer id", user.external_id ?? "")
+    : missing("external_id", "Customer id");
+
+  const login = wellLogin(user)
+    ? ok("fb_login_id", "Facebook login", String(user.fb_login_id))
+    : missing("fb_login_id", "Facebook login");
+
+  const ipUa = wellIp(user) && wellUa(user)
+    ? ok("ip_ua", "IP + browser", `${user.client_ip_address ?? ""} · ${(user.client_user_agent ?? "").slice(0, 42)}`)
+    : user.client_ip_address || user.client_user_agent
+      ? bad("ip_ua", "IP + browser", "Needs both a public IP and a user agent")
+      : missing("ip_ua", "IP + browser");
+
+  return [email, click, phone, customer, browser, login, ipUa];
+}
+
+function ok(id: string, label: string, note: string): FieldCheck {
+  return { id, label, status: "ok", note };
+}
+function bad(id: string, label: string, note: string): FieldCheck {
+  return { id, label, status: "bad", note };
+}
+function missing(id: string, label: string): FieldCheck {
+  return { id, label, status: "missing", note: "Not on this payload" };
+}
+
 type Row = {
   event: TrackingEvent;
   dropped: boolean;
